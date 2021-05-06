@@ -4,9 +4,6 @@ const mysql = require('../mysql').pool
 
 // Listar
 router.get('/', (req, res, next) => {
-    // res.status(200).send({
-    //     mensagem: 'Usando o GET dentro da rota de filmes'
-    // })
 
     mysql.getConnection((error, conn) => {
         if (error) { return res.status(500).send({ error: error}) }
@@ -14,7 +11,7 @@ router.get('/', (req, res, next) => {
             'SELECT * FROM filmes;',
             (error, resultado, fields) => {
                 if (error) { return res.status(500).send({ error: error}) }
-                return res.status(200).send({ responde: resultado })
+                return res.status(200).send({ response: resultado })
             }
         )
     })
@@ -54,19 +51,63 @@ router.post('/', (req, res, next) => {
 
 // Atualizar
 router.put('/', (req, res, next) => {
-    res.status(201).send({
-        mensagem: 'Usando o PUT dentro da rota de filmes'
+
+    mysql.getConnection((error, conn) => {
+        if (error) { return res.status(500).send({ error: error}) }
+        conn.query(
+            `UPDATE filmes
+                SET nome        = ?,
+                    descricao   = ?
+                where id_filme = ?;`,
+
+                [req.body.nome, req.body.descricao, req.body.id_filme],
+
+            (error, resultado, fields) => {
+                if (error) { return res.status(500).send({ error: error}) }
+                return res.status(202).send({
+                    mensagem: 'Produto alterado com sucesso.',
+                 })
+            }
+        )
     })
 })
 
 // Deletar
 router.delete('/', (req, res, next) => {
-    res.status(201).send({
-        mensagem: 'Usando o DELETE dentro da rota de filmes'
+    
+    mysql.getConnection((error, conn) => {
+        if (error) { return res.status(500).send({ error: error}) }
+        conn.query(
+            'DELETE FROM filmes WHERE id_filme = ?;',
+            [req.body.id_filme],
+            (error, resultado, fields) => {
+                if (error) { return res.status(500).send({ error: error}) }
+                return res.status(202).send({ mensagem: `Filme deletado com sucesso.`})
+            }
+        )
     })
 })
 
 // Criar metodo Avaliar
+router.patch('/', (req, res, next) => {
 
+    mysql.getConnection((error, conn) => {
+        if (error) { return res.status(500).send({ error: error}) }
+        conn.query(
+            `UPDATE filmes
+                SET avaliacao = ?
+                where id_filme = ?;`,
+
+                [req.body.avaliacao, req.body.id_filme],
+
+            (error, resultado, fields) => {
+                if (error) { return res.status(500).send({ error: error}) }
+                return res.status(202).send({
+                    mensagem: 'Avaliação feita com sucesso.',
+                 })
+            }
+        )
+    })
+})
 
 module.exports = router;
