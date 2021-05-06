@@ -4,6 +4,7 @@
 Após realizar o **download** do projeto é **necessário verificar** se o **Software(s)** a seguir está **baixado**:
 
 - NodeJS (projeto feito na versão **v14.15.4**)
+- WampServer (para rodar o projeto em um localhost)
 
 ### Banco de Dados: 
 
