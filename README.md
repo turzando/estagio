@@ -44,16 +44,16 @@ Verbos HTTP | Ambiente  |  URL  |
 
 # URL: localhost:3000/filmes
 
-#O verbo **POST** irá criar um novo filme, passando no body o nome e a descrição em formato json;
+O verbo **POST** irá criar um novo filme, passando no body o nome e a descrição em formato json;
 ~~~css
 {
     "nome": "Harry Potter e o Cálice de Fogo",
     "descricao": " ... "
 }
 ~~~
-# O verbo **GET** irá mostrar todos os filmes;
+O verbo **GET** irá mostrar todos os filmes;
 
-# O verbo **PUT** irá atualizar um filme, passando no body o nome, a descrição e o id em formato json;
+O verbo **PUT** irá atualizar um filme, passando no body o nome, a descrição e o id em formato json;
 
 ~~~css
 {
@@ -63,7 +63,7 @@ Verbos HTTP | Ambiente  |  URL  |
 }
 ~~~
 
-# O verbo **DELETE** irá deletar um filme, id em formato json;
+O verbo **DELETE** irá deletar um filme, id em formato json;
 
 ~~~css
 {
@@ -71,7 +71,7 @@ Verbos HTTP | Ambiente  |  URL  |
 }
 ~~~
 
-# O verbo **PATCH** irá avaliar o filme, passando o valor da avaliação e o id em formato json;
+O verbo **PATCH** irá avaliar o filme, passando o valor da avaliação e o id em formato json;
 
 ~~~css
  {
@@ -81,4 +81,4 @@ Verbos HTTP | Ambiente  |  URL  |
 ~~~
 # URL: localhost:3000/filmes/recomendacao
 
-# O verbo **GET** irá mostrar **um** (de forma aleatória) de todos os filmes que ainda não foram avaliados;
+O verbo **GET** irá mostrar **um** (de forma aleatória) de todos os filmes que ainda não foram avaliados;
