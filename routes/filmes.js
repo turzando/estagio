@@ -20,7 +20,7 @@ router.get('/', (req, res, next) => {
 })
 
 // Listar filmes sem avaliação
-router.get('/sem_avaliacao', (req, res, next) => {
+router.get('/recomendacao', (req, res, next) => {
 
     mysql.getConnection((error, conn) => {
         if (error) { return res.status(500).send({ error: error}) }
@@ -28,7 +28,10 @@ router.get('/sem_avaliacao', (req, res, next) => {
             'SELECT * FROM filmes where avaliacao is null;',
             (error, resultado, fields) => {
                 if (error) { return res.status(500).send({ error: error}) }
-                return res.status(200).send({ response: resultado })
+
+                const recomendacao = Math.floor(Math.random() * resultado.length)
+
+                return res.status(200).send({ response: resultado[recomendacao] })
             }
         )
     })
