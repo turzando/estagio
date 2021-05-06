@@ -1,0 +1,28 @@
+{
+  "name": "rest-estagio",
+  "version": "1.0.0",
+  "description": "seletiva para vaga",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArtDev5/estagio.git"
+  },
+  "keywords": [
+    "api",
+    "rest",
+    "rest-api",
+    "filmes"
+  ],
+  "author": "Artur Silva",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ArtDev5/estagio/issues"
+  },
+  "homepage": "https://github.com/ArtDev5/estagio#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
