@@ -10,6 +10,8 @@ router.get('/', (req, res, next) => {
         conn.query(
             'SELECT * FROM filmes;',
             (error, resultado, fields) => {
+                conn.release()
+                
                 if (error) { return res.status(500).send({ error: error}) }
                 return res.status(200).send({ response: resultado })
             }
@@ -27,6 +29,8 @@ router.get('/recomendacao', (req, res, next) => {
         conn.query(
             'SELECT * FROM filmes where avaliacao is null;',
             (error, resultado, fields) => {
+                conn.release()
+
                 if (error) { return res.status(500).send({ error: error}) }
 
                 const recomendacao = Math.floor(Math.random() * resultado.length)
@@ -83,6 +87,8 @@ router.put('/', (req, res, next) => {
                 [req.body.nome, req.body.descricao, req.body.id_filme],
 
             (error, resultado, fields) => {
+                conn.release()
+
                 if (error) { return res.status(500).send({ error: error}) }
                 return res.status(202).send({
                     mensagem: 'Produto alterado com sucesso.',
@@ -101,6 +107,8 @@ router.delete('/', (req, res, next) => {
             'DELETE FROM filmes WHERE id_filme = ?;',
             [req.body.id_filme],
             (error, resultado, fields) => {
+                conn.release()
+
                 if (error) { return res.status(500).send({ error: error}) }
                 return res.status(202).send({ mensagem: `Filme deletado com sucesso.`})
             }
@@ -121,6 +129,8 @@ router.patch('/', (req, res, next) => {
                 [req.body.avaliacao, req.body.id_filme],
 
             (error, resultado, fields) => {
+                conn.release()
+                
                 if (error) { return res.status(500).send({ error: error}) }
                 return res.status(202).send({
                     mensagem: 'Avaliação feita com sucesso.',
