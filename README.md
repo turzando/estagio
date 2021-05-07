@@ -8,7 +8,7 @@ Após realizar o **download** do projeto é **necessário verificar** se o **Sof
 
 ### Banco de Dados: 
 
-Usei o **MySQL** pois já tinha familiaridade. O **.env** trouxe todas as características do DB
+Usei o **MySQL** pois já tinha familiaridade. Utilizei o recurso do **nodemon**, criando uma propriedade chamada **env** para passar as variáveis.
 ~~~css
 MYSQL_USER" : "root",
 MYSQL_PASSWORD" : "",
